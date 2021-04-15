@@ -3,7 +3,7 @@ from socket import *
 serverSocket = socket(AF_INET, SOCK_STREAM)
 #Prepare a sever socket
 ###### Fill in start #######
-serverPort = 12001 
+serverPort = 6789 
 serverSocket.bind(('', serverPort)) #binds the program to socket
 serverSocket.listen(1) #Starts a new session
 #Fill in end
@@ -21,7 +21,8 @@ while True: # while the server is up. proceed -> true
         
         #Send one HTTP header line into socket
         #Fill in start
-        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")
+        res = "HTTP/1.1 200 OK\r\n\r\n"
+        connectionSocket.send(res.encode())
         #Fill in end
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
