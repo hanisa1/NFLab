@@ -26,8 +26,8 @@ while True: # while the server is up. proceed -> true
         #Send the content of the requested file to the client
         for i in range(0, len(outputdata)):
             connectionSocket.send(outputdata[i].encode())
-            connectionSocket.send("\r\n".encode())
-            connectionSocket.close()
+        connectionSocket.send("\r\n".encode())
+        connectionSocket.close()
     except IOError:
         #Send response message for file not found
         #Fill in start
