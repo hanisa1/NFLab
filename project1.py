@@ -3,7 +3,7 @@ from socket import *
 serverSocket = socket(AF_INET, SOCK_STREAM)
 #Prepare a sever socket
 ###### Fill in start #######
-serverPort = 6789 
+serverPort = 6676 
 serverSocket.bind(('', serverPort)) #binds the program to socket
 serverSocket.listen(1) #Starts a new session
 #Fill in end
@@ -34,7 +34,10 @@ while True: # while the server is up. proceed -> true
         #Fill in start
         # #Fill in end
         #Close client socket
-        connectionSocket.send("HTTP/1.1 404 Not found\r\n\r\n")
+        res2 = "HTTP/1.1 404 Not found\r\n\r\n"
+        for i in range(0, len(res2)): 
+            connectionSocket.send(res2[i].encode())
+        connectionSocket.send(res2.encode())
         connectionSocket.close()
         
 serverSocket.close()
